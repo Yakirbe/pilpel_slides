@@ -7,6 +7,7 @@ import {
   PieChart, LineChart, Activity, Users, Clock, Zap, Database,
   ArrowUpRight, ArrowDownRight, MoreVertical, Shield, Gauge, Eye, Lock
 } from 'lucide-react';
+import PepperLogo from '../components/PepperLogo';
 
 const AnalyticsDashboard = () => {
   const colors = {
@@ -183,7 +184,10 @@ const AnalyticsDashboard = () => {
         <div className="h-16 border-b flex items-center justify-between px-6" 
              style={{ borderColor: colors.paleGreen }}>
           <div className="flex items-center space-x-4">
-            <h1 className="text-xl font-bold" style={{ color: colors.darkGreen }}>Analytics Dashboard</h1>
+            <div className="flex items-center gap-2">
+              <PepperLogo size="small" />
+              <h1 className="text-xl font-bold" style={{ color: colors.darkGreen }}>Analytics Dashboard</h1>
+            </div>
             <div className="flex items-center space-x-2 text-sm">
               <Calendar className="w-4 h-4" />
               <span>Last 7 days</span>
@@ -241,7 +245,11 @@ const AnalyticsDashboard = () => {
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold">Test Trends</h3>
               </div>
-              <img src={mockCharts.combinedTrends} alt="Combined Test Trends" className="w-full" />
+              <img 
+                src={mockCharts.combinedTrends} 
+                alt="Combined Test Trends" 
+                className="w-full"
+              />
             </div>
 
             {/* Performance Metrics */}
@@ -310,12 +318,8 @@ const AnalyticsDashboard = () => {
                     <tr key={index} className="text-sm border-t" style={{ borderColor: colors.paleGreen }}>
                       <td className="py-3">
                         <Link 
-                          to={`/test-details/test-2024-00${index + 1}`} 
+                          to={`/test-details/test-2024-00${index + 1}`}
                           className="hover:text-blue-600"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            window.location.href = `/pilpel_slides/test-details/test-2024-00${index + 1}#/test-details`;
-                          }}
                         >
                           <div>{validation.app}</div>
                           <div className="text-xs opacity-60">v{validation.version}</div>

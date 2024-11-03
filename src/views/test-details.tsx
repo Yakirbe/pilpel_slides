@@ -6,9 +6,11 @@ import {
   LayoutDashboard, Server, Lock, FileJson, Users,
   Settings, HelpCircle, Bell, Boxes
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const TestDetails = () => {
+  const { id } = useParams();
+
   const colors = {
     darkGreen: "#225937",
     midGreen: "#367D4E",
@@ -18,7 +20,7 @@ const TestDetails = () => {
   };
 
   const testDetails = {
-    id: "TEST-2024-001",
+    id: id || "TEST-2024-001",
     app: "MyNCLC-App",
     version: "2.1.0",
     description: "API Security Standards Compliance Check",

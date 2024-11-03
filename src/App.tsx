@@ -121,7 +121,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/platform" element={<Platform />} />
             <Route path="/analytics" element={<AnalyticsDashboard />} />
-            <Route path="/test-details" element={<TestDetails />} />
+            <Route path="/test-details/:id" element={<TestDetails />} />
             <Route path="/create-agent" element={<CreateAgent />} />
             <Route path="/agents" element={<CreateAgent />} />
             <Route path="/security" element={<div>Security Page</div>} />
