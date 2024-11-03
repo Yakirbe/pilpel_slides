@@ -43,7 +43,7 @@ const TestDetails = () => {
         status: "success",
         score: 100,
         details: "OAuth2 implementation follows security best practices",
-        screenshot: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23f3f4f6'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%236b7280'%3EAuth Flow Screenshot%3C/text%3E%3C/svg%3E",
+        screenshot: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23f3f4f6'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%236b7280' font-family='sans-serif'%3EAuth Flow Screenshot%3C/text%3E%3C/svg%3E",
         timestamp: "14:30:15",
         checks: [
           { name: "Token Generation", status: "success", value: "JWT RS256" },
@@ -56,7 +56,7 @@ const TestDetails = () => {
         status: "success",
         score: 95,
         details: "Required security headers are properly configured",
-        screenshot: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23f3f4f6'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%236b7280'%3ESecurity Headers Test%3C/text%3E%3C/svg%3E",
+        screenshot: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23f3f4f6'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%236b7280' font-family='sans-serif'%3ESecurity Headers Test%3C/text%3E%3C/svg%3E",
         timestamp: "14:30:28",
         checks: [
           { name: "CORS Policy", status: "success", value: "Restrictive" },
@@ -69,7 +69,7 @@ const TestDetails = () => {
         status: "success",
         score: 100,
         details: "All sensitive data is properly encrypted",
-        screenshot: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23f3f4f6'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%236b7280'%3EEncryption Test%3C/text%3E%3C/svg%3E",
+        screenshot: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23f3f4f6'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%236b7280' font-family='sans-serif'%3EEncryption Test%3C/text%3E%3C/svg%3E",
         timestamp: "14:30:42",
         checks: [
           { name: "TLS Version", status: "success", value: "1.3" },
@@ -159,28 +159,6 @@ const TestDetails = () => {
     { icon: Bell, label: "Notifications", url: "/notifications" },
     { icon: Settings, label: "Settings", url: "/settings" },
     { icon: HelpCircle, label: "Help & Docs", url: "/help" }
-  ];
-
-  // Mock screenshots
-  const screenshots = [
-    {
-      title: "Authentication Flow Test",
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23f3f4f6'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%236b7280'%3EAuth Flow Screenshot%3C/text%3E%3C/svg%3E",
-      timestamp: "14:30:15",
-      status: "success"
-    },
-    {
-      title: "API Security Headers",
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23f3f4f6'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%236b7280'%3ESecurity Headers Test%3C/text%3E%3C/svg%3E",
-      timestamp: "14:30:28",
-      status: "warning"
-    },
-    {
-      title: "Data Encryption Test",
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23f3f4f6'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%236b7280'%3EEncryption Test%3C/text%3E%3C/svg%3E",
-      timestamp: "14:30:42",
-      status: "success"
-    }
   ];
 
   return (
@@ -327,38 +305,6 @@ const TestDetails = () => {
             </div>
           </div>
 
-          {/* Add Screenshots section before Test Steps */}
-          <div className="mb-8">
-            <h2 className="text-xl font-semibold mb-4">Test Screenshots</h2>
-            <div className="grid grid-cols-2 gap-6">
-              {screenshots.map((screenshot, index) => (
-                <div key={index} className="border rounded-lg overflow-hidden" 
-                     style={{ borderColor: colors.paleGreen }}>
-                  <img 
-                    src={screenshot.image} 
-                    alt={screenshot.title}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="p-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="font-medium">{screenshot.title}</h3>
-                      <span className={`px-2 py-1 rounded-full text-xs ${
-                        screenshot.status === 'success' ? 'bg-green-100 text-green-800' :
-                        screenshot.status === 'warning' ? 'bg-yellow-100 text-yellow-800' :
-                        'bg-red-100 text-red-800'
-                      }`}>
-                        {screenshot.status}
-                      </span>
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      Captured at {screenshot.timestamp}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
           {/* Test Steps */}
           <div className="mb-8">
             <h2 className="text-xl font-semibold mb-4">Test Steps</h2>
@@ -371,7 +317,7 @@ const TestDetails = () => {
                       <div className="relative rounded-lg overflow-hidden border"
                            style={{ borderColor: colors.paleGreen }}>
                         <img 
-                          src={step.screenshot} 
+                          src={step.screenshot}
                           alt={step.name}
                           className="w-full h-40 object-cover"
                         />

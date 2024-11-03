@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { mockCharts } from '../utils/mockCharts';
 import { 
   BarChart3, ChevronLeft, Filter, Download, Share2, RefreshCw, 
   Calendar, Search, Settings, Menu, Bot, AlertCircle, CheckCircle2,
@@ -16,11 +17,23 @@ const AnalyticsDashboard = () => {
     accentGreen: "#65B67F"
   };
 
+  const platformLogos = {
+    airtable: "https://w7.pngwing.com/pngs/964/397/png-transparent-airtable-hd-logo-thumbnail.png",
+    retool: "https://logovectordl.com/wp-content/uploads/2023/03/retool-inc-logo-vector.png",
+    microsoft: "https://w7.pngwing.com/pngs/124/600/png-transparent-microsoft-logo-microsoft-thumbnail.png",
+    salesforce: "https://w7.pngwing.com/pngs/569/932/png-transparent-salesforce-hd-logo-thumbnail.png",
+    sap: "https://w7.pngwing.com/pngs/1020/417/png-transparent-sap-se-sap-erp-sap-hana-logo-sap-s-4hana-others-thumbnail.png"
+  };
+
   // Enhanced mock data for validation tests
   const recentValidations = [
     { 
       app: "MyNCLC-App",
       version: "2.1.0",
+      platform: {
+        name: "Airtable",
+        logo: platformLogos.airtable
+      },
       status: "success",
       score: 98,
       time: "2h ago",
@@ -33,6 +46,9 @@ const AnalyticsDashboard = () => {
     { 
       app: "MyNCLC-App",
       version: "2.1.0",
+      platform: {
+        logo: platformLogos.retool
+      },
       status: "warning",
       score: 82,
       time: "3h ago",
@@ -45,6 +61,10 @@ const AnalyticsDashboard = () => {
     { 
       app: "MyNCLC-App",
       version: "2.1.0",
+      platform: {
+        name: "Microsoft",
+        logo: platformLogos.microsoft
+      },
       status: "failed",
       score: 65,
       time: "5h ago",
@@ -57,6 +77,10 @@ const AnalyticsDashboard = () => {
     { 
       app: "MyNCLC-App",
       version: "2.1.0",
+      platform: {
+        name: "Salesforce",
+        logo: platformLogos.salesforce
+      },
       status: "success",
       score: 95,
       time: "6h ago",
@@ -213,69 +237,15 @@ const AnalyticsDashboard = () => {
           {/* Charts Row */}
           <div className="grid grid-cols-2 gap-6 mb-6">
             {/* Validation Trends */}
-            <div className="p-4 rounded-lg border" style={{ borderColor: colors.paleGreen }}>
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="font-semibold">Validation Trends</h3>
-                <div className="flex items-center space-x-3">
-                  {validationTrendsData.datasets.map((dataset, index) => (
-                    <div key={index} className="flex items-center space-x-1">
-                      <div 
-                        className="w-3 h-3 rounded-full" 
-                        style={{ backgroundColor: dataset.color }}
-                      ></div>
-                      <span className="text-xs">{dataset.label}</span>
-                    </div>
-                  ))}
-                </div>
+            <div className="bg-white p-6 rounded-lg shadow-sm border w-full" style={{ borderColor: colors.paleGreen }}>
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-semibold">Test Trends</h3>
               </div>
-              
-              <div className="h-64 relative">
-                {/* Grid lines */}
-                <div className="absolute inset-0 flex flex-col justify-between">
-                  {[0, 25, 50, 75, 100].map((tick) => (
-                    <div 
-                      key={tick} 
-                      className="w-full border-b border-gray-100 relative h-0"
-                    >
-                      <span className="absolute -left-6 -top-2 text-xs text-gray-400">
-                        {tick}%
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Chart */}
-                <div className="absolute inset-0 pt-6 pb-4">
-                  <div className="h-full flex items-end space-x-4">
-                    {validationTrendsData.labels.map((label, dayIndex) => (
-                      <div key={label} className="flex-1 flex flex-col-reverse space-y-1">
-                        {validationTrendsData.datasets.map((dataset, datasetIndex) => (
-                          <div
-                            key={`${label}-${dataset.label}`}
-                            className="w-full rounded-sm transition-all duration-300 hover:opacity-100 relative group"
-                            style={{
-                              height: `${dataset.data[dayIndex] * 0.6}%`,
-                              backgroundColor: dataset.color,
-                              opacity: 0.7,
-                              marginBottom: '1px'
-                            }}
-                          >
-                            <div className="invisible group-hover:visible absolute -top-6 left-1/2 transform -translate-x-1/2 
-                                          bg-gray-800 text-white px-2 py-1 rounded text-xs whitespace-nowrap z-10">
-                              {dataset.data[dayIndex]}%
-                            </div>
-                          </div>
-                        ))}
-                        <span className="text-xs text-center mt-2">{label}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <img src={mockCharts.combinedTrends} alt="Combined Test Trends" className="w-full" />
             </div>
 
             {/* Performance Metrics */}
-            <div className="p-4 rounded-lg border" style={{ borderColor: colors.paleGreen }}>
+            <div className="p-4 rounded-lg border h-full flex flex-col" style={{ borderColor: colors.paleGreen }}>
               <div className="flex justify-between items-center mb-4">
                 <h3 className="font-semibold">Performance Metrics</h3>
                 <span className="text-xs px-2 py-1 rounded-full" 
@@ -284,15 +254,15 @@ const AnalyticsDashboard = () => {
                 </span>
               </div>
               
-              <div className="h-64">
-                <div className="h-full flex items-end space-x-6 pt-8">
+              <div className="flex-1 flex flex-col justify-end">
+                <div className="flex items-end space-x-6">
                   {performanceMetricsData.categories.map((category, index) => (
                     <div key={index} className="flex-1 flex flex-col items-center">
-                      <div className="relative w-full flex-1">
+                      <div className="relative w-full h-48 flex items-end">
                         <div
-                          className="w-full rounded-t transition-all duration-300 hover:opacity-100 absolute bottom-0"
+                          className="w-full rounded-t-lg transition-all duration-300"
                           style={{
-                            height: `${category.value * 0.6}%`,
+                            height: `${category.value}%`,
                             backgroundColor: colors.midGreen,
                             opacity: 0.8,
                           }}
@@ -326,6 +296,7 @@ const AnalyticsDashboard = () => {
                 <thead>
                   <tr className="text-sm text-left" style={{ color: colors.darkGreen }}>
                     <th className="pb-4">Application</th>
+                    <th className="pb-4 text-center">Platform</th>
                     <th className="pb-4">Description</th>
                     <th className="pb-4">Agent</th>
                     <th className="pb-4">Location</th>
@@ -338,10 +309,26 @@ const AnalyticsDashboard = () => {
                   {recentValidations.map((validation, index) => (
                     <tr key={index} className="text-sm border-t" style={{ borderColor: colors.paleGreen }}>
                       <td className="py-3">
-                        <Link to={`/test/${index + 1}`} className="hover:text-blue-600">
+                        <Link 
+                          to={`/test-details/test-2024-00${index + 1}`} 
+                          className="hover:text-blue-600"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            window.location.href = `/pilpel_slides/test-details/test-2024-00${index + 1}#/test-details`;
+                          }}
+                        >
                           <div>{validation.app}</div>
                           <div className="text-xs opacity-60">v{validation.version}</div>
                         </Link>
+                      </td>
+                      <td className="py-3 px-4">
+                        <div className="flex items-center justify-center">
+                          <img 
+                            src={validation.platform.logo} 
+                            alt={validation.platform.name || 'Platform Logo'}
+                            className="w-full h-8 object-contain"
+                          />
+                        </div>
                       </td>
                       <td className="py-3">
                         <div>{validation.description}</div>
