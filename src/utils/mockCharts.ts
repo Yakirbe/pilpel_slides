@@ -1,9 +1,6 @@
 // Define the type for our mock charts
 export interface MockCharts {
   combinedTrends: string;
-  securityTrends: string;
-  performanceTrends: string;
-  complianceTrends: string;
 }
 
 // Import the image directly

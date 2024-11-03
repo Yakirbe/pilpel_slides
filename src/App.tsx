@@ -39,11 +39,6 @@ function App() {
                     Analytics
                   </Link>
                 </li>
-                <li>
-                  <Link to="/test-details" className="text-green-700 hover:text-green-900">
-                    Test Details
-                  </Link>
-                </li>
               </ul>
 
               {/* Mobile menu button */}
@@ -98,15 +93,6 @@ function App() {
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Analytics
-                    </Link>
-                  </li>
-                  <li>
-                    <Link 
-                      to="/test-details" 
-                      className="text-green-700 hover:text-green-900 block"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Test Details
                     </Link>
                   </li>
                 </ul>
