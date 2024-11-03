@@ -3,4 +3,7 @@ node_modules/
 .DS_Store
 *.log
 dist/
-build/ 
+build/
+# Remove these next two lines if you're using dist or build for GitHub Pages
+!dist/
+!build/
