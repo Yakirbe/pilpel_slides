@@ -1,7 +1,7 @@
 {
   "name": "slides",
   "version": "1.0.0",
-  "homepage": "https://YOUR_USERNAME.github.io/slides",
+  "homepage": "https://yakirbe.github.io/slides",
   "type": "module",
   "scripts": {
     "dev": "npx vite",
