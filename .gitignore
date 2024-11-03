@@ -2,8 +2,6 @@ node_modules/
 .env
 .DS_Store
 *.log
-dist/
-build/
-# Remove these next two lines if you're using dist or build for GitHub Pages
-!dist/
-!build/
+# Remove build and dist from gitignore for GitHub Pages
+# dist/
+# build/
