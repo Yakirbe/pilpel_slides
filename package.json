@@ -1,14 +1,14 @@
 {
   "name": "slides",
   "version": "1.0.0",
-  "homepage": "https://YOUR_USERNAME.github.io/REPO_NAME",
+  "homepage": "https://YOUR_USERNAME.github.io/slides",
   "type": "module",
   "scripts": {
     "dev": "npx vite",
     "build": "npx tsc && npx vite build",
     "preview": "npx vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "author": "",
   "license": "ISC",

@@ -1,5 +1,46 @@
 import React from 'react';
-import { Users, Cpu, Shield, Gauge, FileText, Check, Activity, BarChart3, Database, Footprints, Eye, Brain, Layout, RotateCcw, Bot, Search, AlertCircle } from 'lucide-react';
+import { 
+  Users, 
+  Cpu, 
+  Shield, 
+  Gauge, 
+  FileText, 
+  Check, 
+  Activity, 
+  BarChart3, 
+  Database, 
+  Eye, 
+  Brain, 
+  Layout, 
+  Bot 
+} from 'lucide-react';
+
+interface Position {
+  top: string;
+  left: string;
+}
+
+interface Positions {
+  top: Position;
+  right: Position;
+  bottom: Position;
+  left: Position;
+  'top-right': Position;
+  'bottom-right': Position;
+  'bottom-left': Position;
+  'top-left': Position;
+}
+
+const positions: Positions = {
+  'top': { top: '10%', left: '50%' },
+  'right': { top: '50%', left: '90%' },
+  'bottom': { top: '90%', left: '50%' },
+  'left': { top: '50%', left: '10%' },
+  'top-right': { top: '10%', left: '90%' },
+  'bottom-right': { top: '90%', left: '90%' },
+  'bottom-left': { top: '90%', left: '10%' },
+  'top-left': { top: '10%', left: '10%' }
+};
 
 const TechnicalSlide = () => {
   const colors = {
@@ -245,18 +286,7 @@ const TechnicalSlide = () => {
                 {/* AI Agents positioned at corners/edges */}
                 {aiAgents.map((agent, index) => {
                   // Position calculations for corners/edges inside the box
-                  const positions = {
-                    'top': { top: '10%', left: '50%' },
-                    'right': { top: '50%', left: '90%' },
-                    'bottom': { top: '90%', left: '50%' },
-                    'left': { top: '50%', left: '10%' },
-                    'top-right': { top: '10%', left: '90%' },
-                    'bottom-right': { top: '90%', left: '90%' },
-                    'bottom-left': { top: '90%', left: '10%' },
-                    'top-left': { top: '10%', left: '10%' }
-                  };
-
-                  const pos = positions[agent.position];
+                  const pos = positions[agent.position as keyof Positions];
                   
                   return (
                     <div
@@ -289,19 +319,24 @@ const TechnicalSlide = () => {
                       'top-left': { x: 10, y: 10 }
                     }[agent.position];
                     
-                    return (
-                      <line
-                        key={`line-${index}`}
-                        x1="50%"
-                        y1="50%"
-                        x2={`${pos.x}%`}
-                        y2={`${pos.y}%`}
-                        stroke={colors.lightGreen}
-                        strokeWidth="1"
-                        strokeDasharray="4 4"
-                        style={{ opacity: 0.5 }}
-                      />
-                    );
+                    if (pos) {
+                      return (
+                        <line
+                          key={`line-${index}`}
+                          x1="50%"
+                          y1="50%"
+                          x2={`${pos.x}%`}
+                          y2={`${pos.y}%`}
+                          stroke={colors.lightGreen}
+                          strokeWidth="1"
+                          strokeDasharray="4 4"
+                          style={{ opacity: 0.5 }}
+                        />
+                      );
+                    } else {
+                      console.warn(`Position for agent ${agent.position} is undefined.`);
+                      return null;
+                    }
                   })}
                 </svg>
 
