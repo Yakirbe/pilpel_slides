@@ -3,7 +3,7 @@
 Brief description of your project
 
 ## Live Website
-Visit the website: [Your Project Name](https://YOUR_USERNAME.github.io/REPO_NAME)
+Visit the website: [Your Project Name](https://yakirbe.github.io/slides)
 
 ## Installation
 
