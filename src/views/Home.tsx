@@ -67,11 +67,12 @@ const Home = () => {
               <PepperLogo size="large" />
             </div>
             <h1 className="text-5xl font-bold mb-6" style={{ color: colors.darkGreen }}>
-              AI-Powered Application Testing
+              Enterprise Compliance Testing, Simplified
             </h1>
             <p className="text-xl mb-8 text-gray-600">
-              Automate your application testing with intelligent AI agents that validate security,
-              performance, and compliance in real-time.
+              Automate compliance validation across your enterprise applications. 
+              Meet regulatory requirements with AI-powered testing that ensures security, 
+              accessibility, and industry standards.
             </p>
             <div className="flex justify-center gap-4">
               <Link
@@ -79,7 +80,7 @@ const Home = () => {
                 className="px-6 py-3 rounded-lg text-white font-medium transition-all hover:shadow-lg"
                 style={{ backgroundColor: colors.midGreen }}
               >
-                Get Started
+                Start Free Trial
               </Link>
               <Link
                 to="/analytics"
@@ -98,10 +99,10 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-4 gap-8">
             {[
-              { label: "Active Users", value: "1,000+" },
-              { label: "Tests Run", value: "1M+" },
+              { label: "Compliance Standards", value: "20+" },
+              { label: "Enterprise Clients", value: "500+" },
               { label: "Success Rate", value: "99.9%" },
-              { label: "AI Agents", value: "50+" }
+              { label: "Time Saved", value: "75%" }
             ].map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="text-2xl font-bold mb-2" style={{ color: colors.darkGreen }}>

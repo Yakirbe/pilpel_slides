@@ -12,7 +12,10 @@ import {
   Eye, 
   Brain, 
   Layout, 
-  Bot 
+  Bot, 
+  FileJson, 
+  Globe, 
+  Lock 
 } from 'lucide-react';
 
 interface Position {
@@ -150,15 +153,16 @@ const TechnicalSlide = () => {
   ];
 
   return (
-    <div className="bg-white p-8 h-screen flex flex-col" style={{ color: colors.darkGreen }}>
+    <div className="bg-white min-h-screen p-8 flex flex-col" style={{ color: colors.darkGreen }}>
       {/* Header */}
       <h1 className="text-3xl font-bold mb-8" style={{ color: colors.darkGreen }}>
-        NCLC Validation Platform
+        Platform
       </h1>
 
-      <div className="flex-1 flex">
+      {/* Main Content Area */}
+      <div className="flex-1 grid grid-cols-4 gap-6">
         {/* Left - NCLC App Onboarding */}
-        <div className="w-1/4 p-4">
+        <div className="col-span-1">
           <div className="h-full rounded-lg p-4" style={{ backgroundColor: colors.paleGreen }}>
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center space-x-2">
@@ -238,7 +242,7 @@ const TechnicalSlide = () => {
         </div>
 
         {/* Center - AI Core Engine */}
-        <div className="flex-1 mx-4">
+        <div className="col-span-2">
           <div className="h-full rounded-lg relative p-6" style={{ backgroundColor: colors.paleGreen }}>
             <div className="absolute top-4 left-4 flex items-center space-x-2">
               <Cpu className="w-6 h-6" style={{ color: colors.darkGreen }} />
@@ -365,8 +369,8 @@ const TechnicalSlide = () => {
         </div>
 
         {/* Right - Restructured Dashboard */}
-        <div className="w-1/4 p-4">
-          <div className="h-full rounded-lg p-4 flex flex-col" style={{ backgroundColor: colors.paleGreen }}>
+        <div className="col-span-1">
+          <div className="h-full rounded-lg p-4" style={{ backgroundColor: colors.paleGreen }}>
             <div className="flex items-center space-x-2 mb-4 cursor-pointer"
                  onClick={() => window.location.href = '/analytics'}>
               <BarChart3 className="w-5 h-5" style={{ color: colors.darkGreen }} />
@@ -461,16 +465,111 @@ const TechnicalSlide = () => {
         </div>
       </div>
 
-      {/* Bottom - Modified Data Integration */}
-      <div className="h-16 mt-4 rounded-lg p-4 flex items-center justify-between" style={{ backgroundColor: colors.paleGreen }}>
-        <div className="flex items-center space-x-2">
-          <Database className="w-5 h-5" style={{ color: colors.darkGreen }} />
-          <h3 className="font-semibold">NCLC Registry</h3>
+      {/* Bottom Section - Data Sources and Discovery Agent */}
+      <div className="grid grid-cols-2 gap-6 mt-6">
+        {/* Data Sources */}
+        <div className="rounded-lg p-4 h-full" style={{ backgroundColor: colors.paleGreen }}>
+          <div className="flex items-center space-x-2 mb-4">
+            <Database className="w-5 h-5" style={{ color: colors.darkGreen }} />
+            <h3 className="font-semibold">Enterprise Data Sources</h3>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="p-3 rounded bg-white bg-opacity-50">
+              <div className="flex items-center space-x-2 mb-2">
+                <FileJson className="w-4 h-4" style={{ color: colors.midGreen }} />
+                <span className="text-sm font-medium">API Specs</span>
+              </div>
+              <div className="text-xs text-gray-600">
+                OpenAPI/Swagger definitions
+              </div>
+            </div>
+            <div className="p-3 rounded bg-white bg-opacity-50">
+              <div className="flex items-center space-x-2 mb-2">
+                <Shield className="w-4 h-4" style={{ color: colors.midGreen }} />
+                <span className="text-sm font-medium">Security Policies</span>
+              </div>
+              <div className="text-xs text-gray-600">
+                OWASP compliance rules
+              </div>
+            </div>
+            <div className="p-3 rounded bg-white bg-opacity-50">
+              <div className="flex items-center space-x-2 mb-2">
+                <Eye className="w-4 h-4" style={{ color: colors.midGreen }} />
+                <span className="text-sm font-medium">Accessibility Rules</span>
+              </div>
+              <div className="text-xs text-gray-600">
+                WCAG 2.1 guidelines
+              </div>
+            </div>
+            <div className="p-3 rounded bg-white bg-opacity-50">
+              <div className="flex items-center space-x-2 mb-2">
+                <Activity className="w-4 h-4" style={{ color: colors.midGreen }} />
+                <span className="text-sm font-medium">Performance Metrics</span>
+              </div>
+              <div className="text-xs text-gray-600">
+                Response time thresholds
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex space-x-4">
-          <span className="text-sm">Artifact Repository</span>
-          <span className="text-sm">Standards DB</span>
-          <span className="text-sm">Validation History</span>
+
+        {/* Discovery Agent */}
+        <div className="rounded-lg p-4 h-full" style={{ backgroundColor: colors.paleGreen }}>
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center space-x-2">
+              <Bot className="w-5 h-5" style={{ color: colors.darkGreen }} />
+              <h3 className="font-semibold">Discovery Agent</h3>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Brain className="w-4 h-4" style={{ color: colors.midGreen }} />
+              <span className="text-xs px-2 py-1 rounded-full bg-white" 
+                    style={{ color: colors.midGreen }}>
+                AI-Powered
+              </span>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-2 gap-4">
+            <div className="p-3 rounded bg-white bg-opacity-50">
+              <div className="flex items-center space-x-2 mb-2">
+                <Globe className="w-4 h-4" style={{ color: colors.midGreen }} />
+                <span className="text-sm font-medium">Smart Crawling</span>
+              </div>
+              <div className="text-xs text-gray-600">
+                AI-driven endpoint discovery and route mapping
+              </div>
+            </div>
+            
+            <div className="p-3 rounded bg-white bg-opacity-50">
+              <div className="flex items-center space-x-2 mb-2">
+                <Lock className="w-4 h-4" style={{ color: colors.midGreen }} />
+                <span className="text-sm font-medium">Auth Analysis</span>
+              </div>
+              <div className="text-xs text-gray-600">
+                ML-based authentication pattern recognition
+              </div>
+            </div>
+            
+            <div className="p-3 rounded bg-white bg-opacity-50">
+              <div className="flex items-center space-x-2 mb-2">
+                <Activity className="w-4 h-4" style={{ color: colors.midGreen }} />
+                <span className="text-sm font-medium">Pattern Learning</span>
+              </div>
+              <div className="text-xs text-gray-600">
+                Behavioral analysis and request optimization
+              </div>
+            </div>
+
+            <div className="p-3 rounded bg-white bg-opacity-50">
+              <div className="flex items-center space-x-2 mb-2">
+                <Brain className="w-4 h-4" style={{ color: colors.midGreen }} />
+                <span className="text-sm font-medium">Auto-Adapt</span>
+              </div>
+              <div className="text-xs text-gray-600">
+                Self-improving test strategies
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
