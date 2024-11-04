@@ -19,11 +19,11 @@ const AnalyticsDashboard = () => {
   };
 
   const platformLogos = {
-    airtable: "https://w7.pngwing.com/pngs/964/397/png-transparent-airtable-hd-logo-thumbnail.png",
-    retool: "https://logovectordl.com/wp-content/uploads/2023/03/retool-inc-logo-vector.png",
-    microsoft: "https://w7.pngwing.com/pngs/124/600/png-transparent-microsoft-logo-microsoft-thumbnail.png",
-    salesforce: "https://w7.pngwing.com/pngs/569/932/png-transparent-salesforce-hd-logo-thumbnail.png",
-    sap: "https://w7.pngwing.com/pngs/1020/417/png-transparent-sap-se-sap-erp-sap-hana-logo-sap-s-4hana-others-thumbnail.png"
+    airtable: "https://1000logos.net/wp-content/uploads/2022/05/Airtable-Logo-768x432.png",
+    retool: "https://1000logos.net/wp-content/uploads/2020/08/Shopify-Logo-1024x640.png",
+    microsoft: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/1024px-Microsoft_logo.svg.png?20210729021049",
+    salesforce: "https://1000logos.net/wp-content/uploads/2017/08/Salesforce-Logo-768x505.png",
+    sap: "https://1000logos.net/wp-content/uploads/2023/07/SAP-Logo-768x432.png"
   };
 
   // Enhanced mock data for validation tests
