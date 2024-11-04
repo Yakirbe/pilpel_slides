@@ -6,6 +6,10 @@ import AnalyticsDashboard from './views/analytics-dashboard'
 import TestDetails from './views/test-details'
 import CreateAgent from './views/CreateAgent'
 import PepperLogo from './components/PepperLogo'
+import DiscoverPage from './views/discover-page'
+import ReportsPage from './views/reports-page'
+import AIAgentsPage from './views/ai-agents-page'
+import SettingsPage from './views/settings-page'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -18,17 +22,14 @@ function App() {
             <div className="flex justify-between items-center">
               {/* Logo */}
               <div className="flex items-center space-x-2 text-xl font-bold" style={{ color: '#225937' }}>
-                <PepperLogo />
-                <span>pilpel.ai</span>
+                <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'inherit' }}>
+                  <img src="src/assets/logo_pilpel.png" alt="Pilpel Logo" style={{ height: '40px', marginRight: '10px' }} />
+                  <span>pilpel.ai</span>
+                </Link>
               </div>
 
               {/* Desktop Navigation */}
               <ul className="hidden md:flex space-x-6">
-                <li>
-                  <Link to="/" className="text-green-700 hover:text-green-900">
-                    Home
-                  </Link>
-                </li>
                 <li>
                   <Link to="/platform" className="text-green-700 hover:text-green-900">
                     Platform - Slides
@@ -36,7 +37,7 @@ function App() {
                 </li>
                 <li>
                   <Link to="/analytics" className="text-green-700 hover:text-green-900">
-                    Analytics
+                    Dashboard
                   </Link>
                 </li>
               </ul>
@@ -107,6 +108,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/platform" element={<Platform />} />
             <Route path="/analytics" element={<AnalyticsDashboard />} />
+            <Route path="/analytics/discover" element={<DiscoverPage />} />
+            <Route path="/analytics/reports" element={<ReportsPage />} />
+            <Route path="/analytics/ai-agents" element={<AIAgentsPage />} />
+            <Route path="/analytics/settings" element={<SettingsPage />} />
             <Route path="/test-details/:id" element={<TestDetails />} />
             <Route path="/create-agent" element={<CreateAgent />} />
             <Route path="/agents" element={<CreateAgent />} />

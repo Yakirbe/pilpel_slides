@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { mockCharts } from '../utils/mockCharts';
 import { 
   BarChart3, ChevronLeft, Filter, Download, Share2, RefreshCw, 
@@ -10,6 +10,8 @@ import {
 import PepperLogo from '../components/PepperLogo';
 
 const AnalyticsDashboard = () => {
+  const location = useLocation();
+
   const colors = {
     darkGreen: "#225937",
     midGreen: "#367D4E",
@@ -129,13 +131,12 @@ const AnalyticsDashboard = () => {
     ]
   };
 
-  const menuItems = [
-    { icon: BarChart3, label: "Dashboard", active: true },
-    { icon: Activity, label: "Monitoring" },
-    { icon: Database, label: "Artifacts" },
-    { icon: Bot, label: "AI Agents" },
-    { icon: Users, label: "Teams" },
-    { icon: Settings, label: "Settings" }
+  const sidebarItems = [
+    { icon: BarChart3, text: 'Dashboard', path: '/analytics' },
+    { icon: Search, text: 'Discover', path: '/analytics/discover' },
+    { icon: Activity, text: 'Reports', path: '/analytics/reports' },
+    { icon: Bot, text: 'AI Agents', path: '/analytics/ai-agents' },
+    { icon: Settings, text: 'Settings', path: '/analytics/settings' },
   ];
 
   return (
@@ -149,20 +150,21 @@ const AnalyticsDashboard = () => {
 
         {/* Menu Items */}
         <div className="space-y-2">
-          {menuItems.map((item) => (
-            <div
-              key={item.label}
+          {sidebarItems.map((item) => (
+            <Link
+              to={item.path}
+              key={item.text}
               className={`flex items-center space-x-3 p-3 rounded-lg cursor-pointer ${
-                item.active ? 'text-white' : ''
+                location.pathname === item.path ? 'text-white' : ''
               }`}
               style={{ 
-                backgroundColor: item.active ? colors.midGreen : 'transparent',
-                color: item.active ? 'white' : colors.darkGreen
+                backgroundColor: location.pathname === item.path ? colors.midGreen : 'transparent',
+                color: location.pathname === item.path ? 'white' : colors.darkGreen
               }}
             >
               <item.icon className="w-5 h-5" />
-              <span>{item.label}</span>
-            </div>
+              <span>{item.text}</span>
+            </Link>
           ))}
         </div>
 
