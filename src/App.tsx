@@ -4,8 +4,8 @@ import Home from './views/Home'
 import Platform from './views/Platform'
 import AnalyticsDashboard from './views/analytics-dashboard'
 import TestDetails from './views/test-details'
-import CreateAgent from './views/CreateAgent'
 import PepperLogo from './components/PepperLogo'
+import CreateAgent from './views/CreateAgent'
 import DiscoverPage from './views/discover-page'
 import ReportsPage from './views/reports-page'
 import AIAgentsPage from './views/ai-agents-page'
@@ -23,7 +23,7 @@ function App() {
               {/* Logo */}
               <div className="flex items-center space-x-2 text-xl font-bold" style={{ color: '#225937' }}>
                 <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'inherit' }}>
-                  <img src="src/assets/logo_pilpel.png" alt="Pilpel Logo" style={{ height: '40px', marginRight: '10px' }} />
+                  <PepperLogo alt="Pilpel Logo" style={{ height: '40px', marginRight: '10px' }} />
                   <span>pilpel.ai</span>
                 </Link>
               </div>
