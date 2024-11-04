@@ -23,7 +23,7 @@ function App() {
               {/* Logo */}
               <div className="flex items-center space-x-2 text-xl font-bold" style={{ color: '#225937' }}>
                 <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'inherit' }}>
-                  <PepperLogo alt="Pilpel Logo" style={{ height: '40px', marginRight: '10px' }} />
+                  <PepperLogo className="mr-2" size="large" />
                   <span>pilpel.ai</span>
                 </Link>
               </div>
